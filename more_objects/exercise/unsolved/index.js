@@ -33,4 +33,5 @@
     - your winning percentage. Bonus: make this text have a glow effect
     Display the information for all of the rounds on the html
   - clear the value in the input
+  - Bonus: Create logic to eventually end the game
 */

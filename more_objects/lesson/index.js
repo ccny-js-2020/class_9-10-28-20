@@ -2,7 +2,8 @@ var game = {
   randomNumber: undefined,
   rounds: [],
   roundWinner: undefined,
-  winnerColor: undefined
+  winnerColor: undefined,
+  ties: 0
 }
 
 var playerOne = {
@@ -41,34 +42,40 @@ $("#number-guess-button").click(function(){
       computer.score++;
       game.winner = "Computer";
       $("#computer-score").text(computer.score);
-      computer.winnerColor = "red";
-    } else {
+      game.winnerColor = "red";
+    } else if (computer.difference > playerOne.difference){
       playerOne.score++;
       game.winner = "Player One";
       $("#player-one-score").text(playerOne.score);
-      computer.winnerColor = "blue";
+      game.winnerColor = "blue";
+    } else {
+      game.ties++;
+      game.winner = "Tie";
+      $("#tie-score").text(game.ties);
+      game.winnerColor = "black";
     }
 
     game.rounds.push(
-      "<li>Random Number : <strong>" + game.randomNumber + "</strong>" +
+      "<li>Random Number: <strong>" + game.randomNumber + "</strong>" +
       ", Player One Guess: <strong>" + playerOne.numberGuess + "</strong>" +
       ", Computer Guess: <strong>" + computer.numberGuess + "</strong>" +
       ", Player One Differential: <strong>" + playerOne.difference + "</strong>" +
       ", Computer Differential: <strong>" + computer.difference + "</strong>" +
-      ", Winner: <strong style='color: " + computer.winnerColor + "; font-size: 24px; border-style: solid;'>" + game.winner + "</strong></li>"
+      ", Winner: <strong style='color: " + game.winnerColor + "; font-size: 24px; border-style: solid;'>" + game.winner + "</strong></li>"
     );
 
     console.log(game)
 
-    $(".rounds-list").empty();
+    // $(".rounds-list").empty();
 
-    var htmlString = ""
-    for(var i = 0; i < game.rounds.length; i++){
-      //i did have the other way that, but you can customize more with an html string
-      htmlString += game.rounds[i];
-    }
+    // var htmlString = ""
+    // for(var i = 0; i < game.rounds.length; i++){
+    //   //i did have the other way that, but you can customize more with an html string
+    //   htmlString += game.rounds[i];
+    // }
+    var htmlString = game.rounds.join("");
+    console.log(htmlString);
     $(".rounds-list").html(htmlString);
-
 
   } else {
     alert("Please input a number between 0 and 100")

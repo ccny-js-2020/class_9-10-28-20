@@ -6,6 +6,13 @@
   </head>
   <body>
     <h1>Random Number Guessing Game</h1>
+    <div class="">
+      <h2>Rules</h2>
+      <ol>
+        <li>Pick a number between 0 and 100</li>
+        <li>The number closest to the "Random Number" wins</li>
+      </ol>
+    </div>
     <div class="guess-number">
       <input id="number-guess-input" type="number">
       <button type="button" id="number-guess-button">Number Guess</button>
@@ -20,6 +27,7 @@
     <div class="score">
       <p>Player One Score: <span id="player-one-score">0</span></p>
       <p>Computer Score: <span id="computer-score">0</span></p>
+      <p>Tie: <span id="tie-score">0</span></p>
     </div>
     <div class="rounds">
       <ol class="rounds-list"></ol>
